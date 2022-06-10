@@ -14,4 +14,8 @@
     <Folder Include="Orders\Requests\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\FoodMania.Domain\FoodMania.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
