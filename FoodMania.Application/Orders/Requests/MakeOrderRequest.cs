@@ -6,7 +6,7 @@ namespace FoodMania.Application.Orders.Requests
     public class MakeOrderRequest
     {
         public string ClientId { get; set; }
-        public List<ProductOrderRequest> Products { get; set; }
-        public AddressRequest AddressDelivery { get; set; }
+        public List<OrderProductRequest> OrderProducts { get; set; }
+        public AddressRequest DeliveryAddress { get; set; }
     }
 }

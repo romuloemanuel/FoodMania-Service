@@ -1,27 +1,22 @@
+
 using FoodMania.Infra.Extensions;
-using FoodMania.Infra.IoC;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add services to the container.
+
 builder.Services.AddControllers();
-//builder.Services.AddMasstransitConfiguration();
-
-builder.Services.ConfigureDependencyInjection();
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.ConfigureVersioning();
-
 builder.Services.AddSwaggerGen();
-builder.Services.AddHeathCheckConfig();
+builder.Services.AddMasstransitConfiguration();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwaggerConfig();
 }
-
-app.UseHealthCheck();
 
 app.UseHttpsRedirection();
 

@@ -7,11 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Orders\Interfaces\" />
-    <Folder Include="Orders\Mappers\" />
-    <Folder Include="Orders\Services\" />
     <Folder Include="Orders\Responses\" />
-    <Folder Include="Orders\Requests\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.0.2" />
   </ItemGroup>
 
   <ItemGroup>

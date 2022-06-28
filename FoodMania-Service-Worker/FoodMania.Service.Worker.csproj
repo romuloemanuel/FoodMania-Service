@@ -4,18 +4,17 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>a2a2c4e5-3f49-4576-864b-d27bcb76d4e6</UserSecretsId>
-    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <RootNamespace>FoodMania_Service_Worker</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
+    <PackageReference Include="MassTransit" Version="8.0.3" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="8.0.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\FoodMania.Application\FoodMania.Application.csproj" />
-    <ProjectReference Include="..\FoodMania.Infra.IoC\FoodMania.Infra.IoC.csproj" />
     <ProjectReference Include="..\FoodMania.Infra\FoodMania.Infra.csproj" />
   </ItemGroup>
 
