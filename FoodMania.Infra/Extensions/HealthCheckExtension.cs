@@ -16,7 +16,8 @@ namespace FoodMania.Infra.Extensions
         {
             services.AddHealthChecks();
 
-            services.AddHealthChecksUI();
+            services.AddHealthChecksUI()
+                .AddInMemoryStorage(); 
         }
 
         public static void UseHealthCheck(this WebApplication app)
@@ -42,15 +43,17 @@ namespace FoodMania.Infra.Extensions
                   }
               });
 
-            // Gera o endpoint que retornará os dados utilizados no dashboard
             app.UseHealthChecks("/healthchecks-data-ui", new HealthCheckOptions()
             {
                 Predicate = _ => true,
                 ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
             });
 
-            // Ativa o dashboard para a visualização da situação de cada Health Check
-            app.UseHealthChecksUI();
+            app.UseHealthChecksUI(options =>
+            {
+                options.UIPath = "/healthchecks-ui";
+                options.ApiPath = "/health-ui-api";
+            });
         }
     }
 }

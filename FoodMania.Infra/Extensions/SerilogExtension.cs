@@ -19,11 +19,9 @@ namespace FoodMania.Infra.Extensions
                     .CreateLogger()
                  );
 
-            //try/catch block will ensure any configuration issues are appropriately logged
             try
             {
                 Log.Information("Staring the Host");
-                //CreateHostBuilder(args).Build().Run();
             }
             catch (Exception ex)
             {
