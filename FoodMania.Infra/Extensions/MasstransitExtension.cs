@@ -1,4 +1,5 @@
-﻿using MassTransit;
+﻿using FoodMania.Application.Orders.Interfaces.Consumers;
+using MassTransit;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace FoodMania.Infra.Extensions
@@ -7,19 +8,17 @@ namespace FoodMania.Infra.Extensions
     {
         public static void AddMasstransitConfiguration(this IServiceCollection services)
         {
-            services.AddMassTransit(x =>
+            services.AddMassTransit(bus =>
             {
-                x.UsingRabbitMq((context, cfg) =>
-                    {
-                        cfg.Host("localhost:15672", "/", h =>
-                        {
-                            h.Username("guest");
-                            h.Password("guest");
-                        });
+                bus.AddConsumer<MakeOrderConsumer>()
+                .Endpoint(x => x.Name = "make-order-queue");
 
-                        cfg.ConfigureEndpoints(context);
-                    }
-                );
+                bus.UsingRabbitMq((context, cfg) =>
+                {
+                    cfg.Host("amqp://guest:guest@localhost:5672");
+
+                    cfg.ConfigureEndpoints(context);
+                });
             });
         }
     }

@@ -1,10 +1,11 @@
 ﻿
+using MongoDB.Bson;
+
 namespace FoodMania.Domain.Orders
 {
     public class Order
     {
-
-        public Guid Id { get; set; }
+        public ObjectId Id { get; set; }
         public string ClientId { get; set; }
         public DateTime CreateDate { get; set; }
         public List<Product> OrderProducts { get; set; }

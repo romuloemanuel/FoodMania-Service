@@ -1,5 +1,6 @@
 ﻿using FoodMania.Domain.Orders;
 using FoodMania.Domain.Orders.Interfaces;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace FoodMania.Infra.Data
@@ -15,5 +16,13 @@ namespace FoodMania.Infra.Data
         }
 
         public async Task InsertOrder(Order order) => await _orderCollection.InsertOneAsync(order);
+
+        public async Task<Order> GetOrder(ObjectId orderId)
+        {
+            var order = await _orderCollection.FindAsync(x => x.Id == orderId);
+
+            return order.FirstOrDefault();
+        }
+
     }
 }

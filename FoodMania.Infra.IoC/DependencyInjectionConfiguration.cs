@@ -12,6 +12,7 @@ namespace FoodMania.Infra.IoC
             services.ConfigureAppServicesDependency();
             services.ConfigureAutoMapperDependency();
             services.ConfigureRepositoryDependency();
+            services.ConfigureValidationDependency();
         }
     }
 }

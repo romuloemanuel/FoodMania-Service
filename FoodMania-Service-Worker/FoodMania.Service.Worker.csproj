@@ -8,13 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MassTransit" Version="8.0.3" />
-    <PackageReference Include="MassTransit.RabbitMQ" Version="8.0.3" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.1" />
+    <PackageReference Include="MassTransit" Version="8.0.5" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="8.0.5" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\FoodMania.Application\FoodMania.Application.csproj" />
+    <ProjectReference Include="..\FoodMania.Infra.IoC\FoodMania.Infra.IoC.csproj" />
     <ProjectReference Include="..\FoodMania.Infra\FoodMania.Infra.csproj" />
   </ItemGroup>
 

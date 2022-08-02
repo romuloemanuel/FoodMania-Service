@@ -10,8 +10,7 @@ namespace FoodMania.Application.Orders.Mappers
     {
         public OrderRequestToEntityProfile()
         {
-            CreateMap<MakeOrderRequest, Order>()
-                .ForMember(dst => dst.Id, map => map.MapFrom(scr => Guid.NewGuid()));
+            CreateMap<MakeOrderRequest, Order>();
 
             CreateMap<OrderProductRequest, Product>();
 

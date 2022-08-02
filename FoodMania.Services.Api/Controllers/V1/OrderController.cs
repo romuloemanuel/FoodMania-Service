@@ -5,10 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace FoodMania.Services.Api.Controllers
 {
     [ApiController]
-    //[ApiVersion("1", Deprecated = true)]
-    [Route("api/v{version:apiVersion}/order")]
-    [ApiVersion("1.0")]
-    //[Produces("application/json")]
+    [Route("api/v1/order")]
+    [Produces("application/json")]
     public class OrderController : ControllerBase
     {
         readonly IOrderAppService _orderService;

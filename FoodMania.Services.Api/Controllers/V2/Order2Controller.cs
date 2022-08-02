@@ -1,14 +1,13 @@
 using FoodMania.Application.Orders.Interfaces;
-using FoodMania.Application.Orders.Requests;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 
 namespace FoodMania.Services.Api.Controllers
 {
-    [ApiController]
-    //[ApiVersion("1", Deprecated = true)]
-    [Route("api/v{version:apiVersion}/order")]
     [ApiVersion("2.0")]
-    //[Produces("application/json")]
+    [ApiController]
+    [Route("api/v2/order")]
+    [Produces("application/json")]
     public class Order2Controller : ControllerBase
     {
         readonly IOrderAppService _orderService;
@@ -17,10 +16,12 @@ namespace FoodMania.Services.Api.Controllers
             _orderService = orderService;
         }
 
-        [HttpGet("seach-order")]
-        public IActionResult Order()
+        [HttpGet("seach-order/{orderId}")]
+        public async Task<IActionResult> Order([FromQuery] string orderId)
         {
-            return Ok("ok");
+
+            var order = await _orderService.GetOrder(orderId);
+            return Ok(order);
         }
     }
 }
