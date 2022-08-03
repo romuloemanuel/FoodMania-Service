@@ -8,7 +8,7 @@ namespace FoodMania.Application.Orders.Interfaces
     public interface IOrderAppService
     {
         Task<OrderResponse> GetOrder(string orderId);
-        Task MakeOrder(MakeOrderRequest request);
+        void MakeOrder(MakeOrderRequest request);
         Task ProcessMakeOrder(Order order);
     }
 }

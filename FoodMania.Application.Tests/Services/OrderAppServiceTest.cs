@@ -12,12 +12,12 @@ namespace FoodMania.Application.Tests.Services
         OrderAppService _orderAppService;
         Mock<IOrderRepository> _orderRepositoryMock;
         Mock<IMapper> _mapperMock;
-        Mock<ISendEndpointProvider> _sendProviderMock;
+        Mock<IPublishEndpoint> _sendProviderMock;
         public OrderAppServiceTest()
         {
             _orderRepositoryMock = new Mock<IOrderRepository>();
             _mapperMock = new Mock<IMapper>();
-            _sendProviderMock = new Mock<ISendEndpointProvider> { CallBase = true };
+            _sendProviderMock = new Mock<IPublishEndpoint> { CallBase = true };
 
             _orderAppService = new OrderAppService(
                 _orderRepositoryMock.Object,

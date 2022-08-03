@@ -16,9 +16,9 @@ namespace FoodMania.Services.Api.Controllers
         }
 
         [HttpPost("make-order")]
-        public async Task<IActionResult> Order([FromBody] MakeOrderRequest request)
+        public IActionResult Order([FromBody] MakeOrderRequest request)
         {
-            await _orderService.MakeOrder(request);
+            _orderService.MakeOrder(request);
             return Ok();
         }
     }

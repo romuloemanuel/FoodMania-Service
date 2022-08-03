@@ -14,12 +14,11 @@ namespace FoodMania.Domain.Orders
 
     public class Product
     {
-        public Product(Guid id, int quantity)
+        public Product(string id, int quantity)
         {
 
         }
-
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         public int Quantity { get; set; }
     }
 

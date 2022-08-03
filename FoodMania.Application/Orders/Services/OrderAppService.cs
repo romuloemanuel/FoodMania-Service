@@ -14,11 +14,11 @@ namespace FoodMania.Application.Orders.Services
     {
         readonly IOrderRepository _orderRepository;
         readonly IMapper _mapper;
-        readonly ISendEndpointProvider _sendEndpointProvider;
+        readonly IPublishEndpoint _sendEndpointProvider;
         public OrderAppService(
             IOrderRepository orderRepository,
             IMapper mapper,
-            ISendEndpointProvider sendEndpointProvider)
+            IPublishEndpoint sendEndpointProvider)
         {
             _orderRepository = orderRepository;
             _mapper = mapper;
@@ -35,14 +35,11 @@ namespace FoodMania.Application.Orders.Services
             return _mapper.Map<OrderResponse>(order);
         }
 
-        public Task MakeOrder(MakeOrderRequest request)
+        public void MakeOrder(MakeOrderRequest request)
         {
             var order = _mapper.Map<Order>(request);
 
-            _sendEndpointProvider.Send(order);
-
-            //send to queue
-            return Task.FromResult(order);
+            _sendEndpointProvider.Publish(order);
         }
 
         public async Task ProcessMakeOrder(Order order)

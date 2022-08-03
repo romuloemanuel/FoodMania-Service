@@ -11,11 +11,14 @@ namespace FoodMania.Infra.Data
 
         public OrderRepository()
         {
-            MongoClient client = new MongoClient("mongodb://admin:*****@localhost:27018/?authMechanism=DEFAULT");
+            MongoClient client = new MongoClient("mongodb://mongoadmin:admin@localhost:27018/");
             _orderCollection = client.GetDatabase("FoodMania").GetCollection<Order>("Orders");
         }
 
-        public async Task InsertOrder(Order order) => await _orderCollection.InsertOneAsync(order);
+        public async Task InsertOrder(Order order)
+        {
+            await _orderCollection.InsertOneAsync(order);
+        }
 
         public async Task<Order> GetOrder(ObjectId orderId)
         {
@@ -23,6 +26,5 @@ namespace FoodMania.Infra.Data
 
             return order.FirstOrDefault();
         }
-
     }
 }

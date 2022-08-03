@@ -1,7 +1,8 @@
-﻿using FoodMania.Domain.Orders;
+﻿using FoodMania.Application.Orders.Interfaces;
+using FoodMania.Domain.Orders;
 using MassTransit;
 
-namespace FoodMania.Application.Orders.Interfaces.Consumers
+namespace FoodMania.Application.Consumers
 {
     public class MakeOrderConsumer : IConsumer<Order>
     {

@@ -1,4 +1,5 @@
-﻿using FoodMania.Application.Orders.Interfaces.Consumers;
+﻿using FoodMania.Application.Consumers;
+using FoodMania.Infra.Filters;
 using MassTransit;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -18,7 +19,10 @@ namespace FoodMania.Infra.Extensions
                     cfg.Host("amqp://guest:guest@localhost:5672");
 
                     cfg.ConfigureEndpoints(context);
+
+                    cfg.UseExceptionLogger();
                 });
+                
             });
         }
     }

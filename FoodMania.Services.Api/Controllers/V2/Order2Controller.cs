@@ -1,6 +1,5 @@
 using FoodMania.Application.Orders.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Serilog;
 
 namespace FoodMania.Services.Api.Controllers
 {
@@ -16,11 +15,11 @@ namespace FoodMania.Services.Api.Controllers
             _orderService = orderService;
         }
 
-        [HttpGet("seach-order/{orderId}")]
+        [HttpGet("get-order/{orderId}")]
         public async Task<IActionResult> Order([FromQuery] string orderId)
         {
-
             var order = await _orderService.GetOrder(orderId);
+
             return Ok(order);
         }
     }
